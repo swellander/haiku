@@ -1,0 +1,25 @@
+{
+  "name": "haiku",
+  "version": "1.0.0",
+  "description": "haiku checker/generator",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swellander/haiku.git"
+  },
+  "keywords": [
+    "haiku"
+  ],
+  "author": "sam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swellander/haiku/issues"
+  },
+  "homepage": "https://github.com/swellander/haiku#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
