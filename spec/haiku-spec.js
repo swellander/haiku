@@ -20,8 +20,8 @@ describe('Haiku', function() {
         expect(badHaiku.isValid()).toBe(false);
     }); 
 
-    it ('should generate a new 5 syllable line for a haiku', function() {
-        expect(haiku.countSyllables(haiku.generate())).toEqual(5);
+    it ('should generate a new and valid haiku obj', function() {
+        expect(haiku.isValid(haiku.generate())).toBe(true);
     })
 
     it ('should be able to generate random words', function() {

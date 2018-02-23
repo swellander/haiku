@@ -77,30 +77,30 @@ export class Haiku {
         return word;
     }
 
-    generate() {
-        let line1 = '';
-        let line2 = '';
-        let line3 = '';
+    generateLine(numberOfSyllables) {
+        let line = '';
         let p = this;
-
-        
-        //start with generating three separate lines
-
-        while (this.countSyllables(line1) < 5) {
+        while (this.countSyllables(line) < numberOfSyllables) {
             let word = p.getRandomWord();
-            console.log('new Word')
             let wordSyllables = p.countSyllables(word);
-            let syllablesLeft = 5 - p.countSyllables(line1);
+            let syllablesLeft = numberOfSyllables - p.countSyllables(line);
             if (wordSyllables <= syllablesLeft) {
                 if (wordSyllables === syllablesLeft) {
-                    line1 += word;
+                    line += word;
                 } else {
-                    line1 += (word + ' ');
+                    line += (word + ' ');
                 }
             }
         }
-        console.log(line1);
-        return line1;
+        return line;
+    }
+
+    generate() {
+        let line1 = this.generateLine(5);
+        let line2 = this.generateLine(7);
+        let line3 = this.generateLine(5);
+        console.log(`${line1}\n${line2}\n${line3}`);
+        return new Haiku(line1, line2, line3);
     }
 
 }
