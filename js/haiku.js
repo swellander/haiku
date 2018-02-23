@@ -102,6 +102,9 @@ export class Haiku {
         console.log(`${line1}\n${line2}\n${line3}`);
         return new Haiku(line1, line2, line3);
     }
+    getFullPoem() {
+        return `${this.line1}<br>${this.line2}<br>${this.line3}`;
+    }
 
 }
 
