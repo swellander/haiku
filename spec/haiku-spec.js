@@ -20,5 +20,12 @@ describe('Haiku', function() {
         expect(badHaiku.isValid()).toBe(false);
     }); 
 
+    it ('should generate a new 5 syllable line for a haiku', function() {
+        expect(haiku.countSyllables(haiku.generate())).toEqual(5);
+    })
+
+    it ('should be able to generate random words', function() {
+        expect(typeof haiku.getRandomWord()).toEqual('string');
+    })
 
 })
