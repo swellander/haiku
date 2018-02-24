@@ -45,7 +45,7 @@ var Haiku = exports.Haiku = function () {
 
             str = str.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").replace(/\s{2,}/g, " ");
             var words = str.split(' ');
-            var vowels = ['a', 'e', 'i', 'o', 'u'];
+            var vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
             var count = 0;
 
             //iterate over each letter in each word
@@ -118,13 +118,12 @@ var Haiku = exports.Haiku = function () {
             var line1 = this.generateLine(5);
             var line2 = this.generateLine(7);
             var line3 = this.generateLine(5);
-            console.log(line1 + '\n' + line2 + '\n' + line3);
             return new Haiku(line1, line2, line3);
         }
     }, {
         key: 'getFullPoem',
         value: function getFullPoem() {
-            return this.line1 + '<br>' + this.line2 + '<br>' + this.line3;
+            return this.line1 + '\n' + this.line2 + '\n' + this.line3;
         }
     }]);
 
@@ -138,9 +137,43 @@ var _haiku = require('./../js/haiku.js');
 
 $(document).ready(function () {
     $('#generate').click(function () {
+
         var haiku = new _haiku.Haiku();
 
-        $('#haiku').text(haiku.generate().getFullPoem());
+        $.ajax({
+            url: 'http://www.randomtext.me/api/gibberish/p-1/100-105',
+            type: 'GET',
+            data: {
+                format: 'json'
+            },
+            success: function success(response) {
+                haiku.hispum = response.text_out;
+                haiku.hipsum = response.text_out.replace(/<(?:.|\n)*?>/gm, '').split(' ');
+                haiku = haiku.generate();
+
+                $('#generated-line-1').text(haiku.line1);
+                $('#generated-line-2').text(haiku.line2);
+                $('#generated-line-3').text(haiku.line3);
+            },
+            error: function error() {
+                console.log('THERE WAS AN ERROR WITH AJAX REQUEST');
+            }
+        });
+    });
+
+    $('#haiku-checker-btn').click(function (event) {
+
+        var line1 = $('#line-1').val();
+        var line2 = $('#line-2').val();
+        var line3 = $('#line-3').val();
+
+        var haiku = new _haiku.Haiku(line1, line2, line3);
+
+        if (haiku.isValid()) {
+            $('#outcome').text('Looks Good!');
+        } else {
+            $('#outcome').text('Uh oh...');
+        }
     });
 });
 

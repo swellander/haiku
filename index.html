@@ -1,16 +1,44 @@
 <head>
-        <script
-        src="http://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="build/js/app.js"></script>
-    
 </head>
 
 <body>
-    <h1>HAiKu Generator!</h1>
+    <div class="container">
+        <h1>Haiku Generator/Checker</h1>
+        <hr>
+        <br>
+        <form id="haiku-checker-form" action="" style="float: right">
+            <h3 id="outcome">Give it a go!</h3> </h3>
+            <div>
+                <label for="">Line 1</label>
+                <input id="line-1" type="text">
+            </div>
+            <div>
+                <label for="">Line 2</label>
+                <input id="line-2" type="text">
+            </div>
+            <div>
+                <label for="">Line 3</label>
+                <input id="line-3" type="text">
+            </div>
+            <br>
+            <div>
+                <button id="haiku-checker-btn" class="btn btn-success" type="button">Check Haiku</button>
+            </div>
 
-    <button id="generate">Generate!</button>
+        </form>
 
-    <h3 id="haiku"></h3>
+        <button class="btn-success btn" id="generate">Generate</button>    
+        <br>
+        <br>
+        <div>
+            <p id="generated-line-1"></p>
+            <p id="generated-line-2"></p>
+            <p id="generated-line-3"></p>
+        </div>
+    </div>
+
 </body>

@@ -29,7 +29,7 @@ export class Haiku {
 
         str = str.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g," ");
         let words = str.split(' ');
-        let vowels = ['a', 'e', 'i', 'o', 'u'];
+        let vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
         let count = 0;
 
         //iterate over each letter in each word
@@ -99,11 +99,10 @@ export class Haiku {
         let line1 = this.generateLine(5);
         let line2 = this.generateLine(7);
         let line3 = this.generateLine(5);
-        console.log(`${line1}\n${line2}\n${line3}`);
         return new Haiku(line1, line2, line3);
     }
     getFullPoem() {
-        return `${this.line1}<br>${this.line2}<br>${this.line3}`;
+        return `${this.line1}\n${this.line2}\n${this.line3}`;
     }
 
 }
